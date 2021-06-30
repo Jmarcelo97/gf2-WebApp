@@ -12,7 +12,11 @@ type ResponseDataProps = {
     label: string[];
 }
 
-type HomeProps = ResponseDataProps;
+type HomeProps = {
+    nomeUsuario: string;
+    position: number[];
+    label: string[];
+};
 
 type DataProps = {
     id: number;
@@ -38,7 +42,7 @@ type DataProps = {
     }
 }
 
-function Home({position, label}: HomeProps) {
+function Home({nomeUsuario, position, label}: HomeProps) {
 
     const data = {
         labels: label,
@@ -64,7 +68,7 @@ function Home({position, label}: HomeProps) {
                 <header>
                     <nav className={styles.nav}>
                         <div className={styles.user}>
-                            <span className="nome-usuario"></span>
+                            <span>{ nomeUsuario }</span>
                             <img src="/usuario.svg" alt="Imagem do usuário" />
                         </div>
                     </nav>
@@ -161,6 +165,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
         props: {
+            nomeUsuario: data[0].cliente.nome,
             position: responseData.position,
             label: responseData.label,
         },
