@@ -4,9 +4,25 @@
     box-sizing: border-box;
 }
 
+@media (prefers-color-scheme: light) {
+    :root{
+        --background: #f0f2f5;
+        --background-card: #ffffff;
+        --font-color: #000000;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root{
+        --background: #18191A;
+        --background-card: #242526;
+        --font-color: #ffffff;
+    }
+}
+
 body {
     width: 100vw;
     height: 100vh;
-    background-color: #f0f2f5;
+    background-color: var(--background);
     font-family: 'Poppins', sans-serif;
+    color: var(--font-color);
 }
